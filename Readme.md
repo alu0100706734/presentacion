@@ -3,6 +3,7 @@
 ## Juan Nicolás Vargas Moreno
 ### Systemas y Tecnologias Web
 [Enlace al juego](http://codepen.io/innNNN/pen/rxVPxd "Juego codepen")
+
 En este tutorial explicaré como hacer un sencillo juego multijugador utilizando las etiquetas Canvas y JavaScript
 
 Para comenzar a desarrollar nuestro juego debemos crear una etiqueta canvas, para ello utlizamos 
