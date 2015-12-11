@@ -8,7 +8,7 @@ En este tutorial explicaré como hacer un sencillo juego multijugador utilizando
 
 Para comenzar a desarrollar nuestro juego debemos crear una etiqueta canvas, para ello utlizamos 
 
-:::js
+```js
 var canvas = document.createElement("canvas");
 var ctx = canvas.getContext("2d");
 canvas.width = 512;
