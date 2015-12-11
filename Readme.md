@@ -215,7 +215,7 @@ var render = function () {
 };
 
 
-##Funcion bucle principal donde esta pidiendo constantemente la entrada de datos (pulsacion de teclas para movimiento)
+## Funcion bucle principal donde esta pidiendo constantemente la entrada de datos (pulsacion de teclas para movimiento)
 
 
 
@@ -232,7 +232,7 @@ var main = function () {
 };
 
 
-##Y para terminar añadimos el soporte para todos los navegadores
+## Y para terminar añadimos el soporte para todos los navegadores
 
 
 // Soporte para navegadores
