@@ -19,7 +19,7 @@ En este fragmento creamos un lienzo canvas cuyo contexto será en 2D y definidas
 
 A continuación vamos a proceder a definir las imagenes que compondrán nuestro juego
 
-:::js
+
 
 // imagen de fondo
 var bgReady = false;
@@ -29,7 +29,6 @@ bgImage.onload = function () {
 };
 bgImage.src = "http://uploads.gamedev.net/monthly_04_2014/post-168788-0-87611800-1396469745.png";
 
-:::js
 
 //imagen Heroe 1
 var heroReady = false;
@@ -39,7 +38,7 @@ heroImage.onload = function () {
 };
 heroImage.src = "http://www.milweevideogames.com/wp-content/uploads/2014/11/hero.png";
 
-:::js
+
 
 // imagen Heroe 2
 var heroReady2 = false;
@@ -48,8 +47,6 @@ heroImage2.onload = function () {
 	heroReady2 = true;
 };
 heroImage2.src = "http://i.imgur.com/OXNUmdy.png";
-
-:::js
 
 // imagen Monstruo
 var monsterReady = false;
@@ -65,20 +62,15 @@ Cuando se cargue la imagen nuestro objeto mostrara su atribute Ready = true
 El siguiente paso será definir los personajes
 
 
-:::js
 
 // objetos del juego
 var hero = {
 	speed: 256 
 };
 
-:::js
-
 var hero2 = {
 	speed: 256 
 };
-
-:::js
 
 var monster = {};
 var n_monstruos = 0;
@@ -88,18 +80,16 @@ Hemos creado dos variables contador para ver quien de los dos jugadores consigue
 También hemos definido la velocidad de los jugadores en 256 pixeles por segundo.
 Ahora pasaremos a definir la función para los controles
 
-:::js
 
 // controles teclado
 var keysDown = {};
 
-:::js
+
 
 addEventListener("keydown", function (e) {
 	keysDown[e.keyCode] = true;
 }, false);
 
-:::js
 
 addEventListener("keyup", function (e) {
 	delete keysDown[e.keyCode];
@@ -109,17 +99,15 @@ Creamos evento de escucha y definimos las funciones keydown y keyup. (Cuando se 
 Ahora vamos a implementar que cuando un jugador atrape a un goblin, vuelvan a aparecer en una posición aleatoria.
 El jugador más rapido atrapará al monstruo.
 
-:::js
 
 // Reset del juego al atrapar un monstruo
 var reset = function () {
 	hero.x = 32 + (Math.random() * (canvas.width-64));
 	hero.y = 32 + (Math.random() * (canvas.height - 64));
-:::js
 
   	hero2.x = 32 + (Math.random() * (canvas.width-64));
 	hero2.y = 32 + (Math.random() * (canvas.height - 64));
-:::js
+
 
 	monster.x = 32 + (Math.random() * (canvas.width - 64));
 	monster.y = 32 + (Math.random() * (canvas.height - 64));
@@ -131,8 +119,6 @@ Definimos la posicion x e y de cada heroe y monstruo con una funcion Random (Mat
 
 A continuación definiremos las teclas de juego, los numeros 87,83,65,68 corresponden con WASD que serán
 nuestras teclas principales de control y 38,40,37,39 las flechas del teclado.
-
-:::js
 
 // Cargar objetos
 var update = function (modifier) {
@@ -149,7 +135,6 @@ var update = function (modifier) {
 		hero2.x += hero2.speed * modifier;
 	}
 }
-:::js  
 
  var update2 = function (modifier2) {
 	if (38 in keysDown) { // arriba
@@ -169,7 +154,6 @@ var update = function (modifier) {
 	En tal caso significaria que el jugador a cazado al goblin y se le deberá sumar su punto correspondiente luego de llamar a la funcion
 	reset que inciará un nuevo juego con posiciones aleatorias
 	
-	:::js
 	
 	// Estan en contacto?
 	if (
@@ -181,7 +165,6 @@ var update = function (modifier) {
 		++n_monstruos;
 		reset();
 	}
-:::js 
 
   else if (
 		hero2.x <= (monster.x + 32)
@@ -197,7 +180,6 @@ var update = function (modifier) {
 Pasamos ahora a renderizar y definir los objetos para que salgan en pantalla donde si la imagen está cargada mostrará al jugador 
 en las posiciones correspondientes.
 
-:::js
 
 var render = function () {
 	if (bgReady) {
@@ -214,9 +196,9 @@ var render = function () {
 	}
 	
 	
-	Mostraremos la puntuación de los jugadores
+	##Mostraremos la puntuación de los jugadores
 	
-	:::js
+
 	
 	ctx.fillStyle = "rgb(250, 250, 250)";
 	ctx.font = "24px Helvetica";
@@ -224,7 +206,6 @@ var render = function () {
 	ctx.textBaseline = "top";
 	ctx.fillText("Azul: " + n_monstruos, 32, 32);
 
-	 :::js
 	 
   	ctx.fillStyle = "rgb(250, 250, 250)";
 	ctx.font = "24px Helvetica";
@@ -234,15 +215,14 @@ var render = function () {
 };
 
 
-Funcion bucle principal donde esta pidiendo constantemente la entrada de datos (pulsacion de teclas para movimiento)
+##Funcion bucle principal donde esta pidiendo constantemente la entrada de datos (pulsacion de teclas para movimiento)
 
 
-:::js
 
 var main = function () {
 	var now = Date.now();
 	var delta = now - then;
-:::js
+
 
   update2(delta / 1000);
 	update(delta / 1000);
@@ -252,16 +232,13 @@ var main = function () {
 };
 
 
-Y para terminar añadimos el soporte para todos los navegadores
+##Y para terminar añadimos el soporte para todos los navegadores
 
-
-:::js
 
 // Soporte para navegadores
 var w = window;
 requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
 
-:::js
 
 // Let's play this game!
 var then = Date.now();
